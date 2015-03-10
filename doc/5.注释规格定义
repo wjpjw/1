@@ -1,0 +1,24 @@
+  1.构造函数的处理
+    /*
+     *@1-->constructor1(initial size < 0)-->IllegalArgumentException
+     *@1-->constructor1(initial size >= 0)-->common  
+     * */
+    public Stack(int initialNum){
+    	if(initialNum<0){
+    		throw new IllegalArgumentException("Illegal initialNum: "+initialNum);
+    	}
+    	elementData = new Object[initialNum];
+    	top = -1;
+    	size = initialNum;
+    }
+
+    以这段为例，这里是个特殊的函数，构造函数，@1的1就表明是第一个构造函数。
+    在建模过程中，每有一个构造函数就要额外的设置一个状态用于表示一个起点。
+    这种起点状态和普通状态不同，和状态图模型无关，只是为了更完整地进行类的规格化。在model checking时要跳过这些起点状态。
+  
+    异常状态就直接拿异常名作为异常状态名。
+    起点状态就以1、2、3作为起点状态名。  
+  
+  2.写注释的是规格的设计者，所以守护条件不能与实现有关，即不能用到类的属性，所以condition是简洁的非形式化的描述。
+  
+    
