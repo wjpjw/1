@@ -2,6 +2,7 @@ package model;
 
 public class State{
 	boolean is_exception;
+	boolean is_init;
 	String name;
 	public State(boolean is_exception, String name) {
 		super();
