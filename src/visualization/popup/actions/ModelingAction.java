@@ -8,10 +8,10 @@ import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 
 
-public class CheckAction implements IObjectActionDelegate {
+public class ModelingAction implements IObjectActionDelegate {
 
 	private Shell shell;
-	public CheckAction() {
+	public ModelingAction() {
 		super();
 	}
 
@@ -26,8 +26,7 @@ public class CheckAction implements IObjectActionDelegate {
 	 * @see IActionDelegate#run(IAction)
 	 */
 	public void run(IAction action) {
-		
-		MessageDialog.openInformation(shell,"Check","~");
+		MessageDialog.openInformation(shell,"Modeling","~");
 	}
 
 	/**

@@ -34,41 +34,35 @@
             file="contexts.xml">
       </contexts>
    </extension>
-   
+
 	<extension
          point="org.eclipse.ui.popupMenus">
       <objectContribution
             objectClass="org.eclipse.jdt.core.IJavaElement"
-            id="com.popmenu.check.contribution1">
+            id="visualization.popup.actions.PopupMenu">
          <menu
                label="Statecharts Modeling"
                path="additions"
-               id="com.popmenu.check.menu1">
+               id="visualization.popup.actions.PopupMenu1">
             <separator
                   name="group1">
             </separator>
          </menu>
          <action
                label="Automatic Modeling"
-               class="com.popmenu.check.popup.actions.CheckAction"
-               menubarPath="com.popmenu.check.menu1/group1"
+               class="visualization.popup.actions.ModelingAction"
+               menubarPath="visualization.popup.actions.PopupMenu1/group1"
                enablesFor="1"
-               id="com.popmenu.check.newAction">
+               id="visualization.popup.actions.ModelingAction1">
          </action>
           <action
                label="Model Checking"
-               class="com.popmenu.check.popup.actions.CheckAction"
-               menubarPath="com.popmenu.check.menu1/group1"
+               class="visualization.popup.actions.CheckAction"
+               menubarPath="visualization.popup.actions.PopupMenu1/group1"
                enablesFor="1"
-               id="com.popmenu.check.newAction">
-         </action>
-         <action
-               label="Model Checking"
-               class="com.popmenu.check.popup.actions.CheckAction"
-               menubarPath="com.popmenu.check.menu1/group1"
-               enablesFor="1"
-               id="com.popmenu.check.newAction">
+               id="visualization.popup.actions.ModelingAction2">
          </action>
       </objectContribution>
    </extension>
+   
 </plugin>
