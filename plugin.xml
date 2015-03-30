@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="Statecharts Model Checking Category"
+            id="visualization">
+      </category>
+      <view
+            name="ModelDisp View"
+            icon="icons/mc.png"
+            category="visualization"
+            class="visualization.views.ModelDispView"
+            id="visualization.views.ModelDispView">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.eclipse.jdt.ui.JavaPerspective">
+         <view
+               ratio="0.5"
+               relative="org.eclipse.ui.views.ProblemView"
+               relationship="right"
+               id="visualization.views.ModelDispView">
+         </view>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.help.contexts">
+      <contexts
+            file="contexts.xml">
+      </contexts>
+   </extension>
+   
+	<extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            objectClass="org.eclipse.jdt.core.IJavaElement"
+            id="com.popmenu.check.contribution1">
+         <menu
+               label="Statecharts Modeling"
+               path="additions"
+               id="com.popmenu.check.menu1">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               label="Automatic Modeling"
+               class="com.popmenu.check.popup.actions.CheckAction"
+               menubarPath="com.popmenu.check.menu1/group1"
+               enablesFor="1"
+               id="com.popmenu.check.newAction">
+         </action>
+          <action
+               label="Model Checking"
+               class="com.popmenu.check.popup.actions.CheckAction"
+               menubarPath="com.popmenu.check.menu1/group1"
+               enablesFor="1"
+               id="com.popmenu.check.newAction">
+         </action>
+         <action
+               label="Model Checking"
+               class="com.popmenu.check.popup.actions.CheckAction"
+               menubarPath="com.popmenu.check.menu1/group1"
+               enablesFor="1"
+               id="com.popmenu.check.newAction">
+         </action>
+      </objectContribution>
+   </extension>
+</plugin>
