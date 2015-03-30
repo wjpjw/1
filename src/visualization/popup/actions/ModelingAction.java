@@ -37,9 +37,6 @@ public class ModelingAction implements IObjectActionDelegate {
 	 * @see IActionDelegate#run(IAction)
 	 */
 	public void run(IAction action) {
-		@SuppressWarnings("restriction")
-		
-		
 		ISelectionService selectionService = Workbench.getInstance().getActiveWorkbenchWindow().getSelectionService();    
 		ISelection selection = selectionService.getSelection();
 		if(selection instanceof IStructuredSelection) {  
