@@ -1,12 +1,13 @@
 package model;
 
 public class SelectedClass {
-	public SelectedClass(SelectedClassMeta meta, Statechart statechart) {
-		this.meta = meta;
-		this.statechart = statechart;
+	private static SelectedClass instance=new SelectedClass();
+	public static SelectedClass getInstance(){
+		return instance;
 	}
-	private SelectedClassMeta meta;
-	private Statechart statechart;
+	private SelectedClass(){}
+	private SelectedClassMeta meta=new SelectedClassMeta();
+	private Statechart statechart=new Statechart();
 	public SelectedClassMeta getMeta() {
 		return meta;
 	}
@@ -19,5 +20,4 @@ public class SelectedClass {
 	public void setStatechart(Statechart statechart) {
 		this.statechart = statechart;
 	}
-	
 }

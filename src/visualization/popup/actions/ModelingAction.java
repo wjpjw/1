@@ -1,5 +1,8 @@
 package visualization.popup.actions;
 
+import model.SelectedClass;
+import model.SelectedClassMeta;
+
 import org.eclipse.core.resources.IProject;
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IJavaProject;
@@ -15,6 +18,7 @@ import org.eclipse.ui.internal.Workbench;
 
 
 
+@SuppressWarnings("restriction")
 public class ModelingAction implements IObjectActionDelegate {
 
 	private Shell shell;
@@ -42,15 +46,21 @@ public class ModelingAction implements IObjectActionDelegate {
 			Object element = ((IStructuredSelection)selection).getFirstElement();  
 			if (element instanceof ICompilationUnit) 
 			{
-				MessageDialog.openInformation(shell,"Modeling","Start Statecharts Modeling...");
 				ICompilationUnit iFile = (ICompilationUnit) element;
-				
-				// 获得.java文件名
 				String claName = iFile.getElementName();
 				claName = claName.replace(".java", "");
 				String cPath = iFile.getPath().toString();
-				MessageDialog.openInformation(shell,"class path",cPath+","+claName);
-
+				IJavaProject jp = iFile.getJavaProject();
+			    IProject project = jp.getProject();
+				String jpName = jp.getElementName();
+				String pPath = project.getRawLocationURI().toString();
+				pPath = pPath.substring(6);
+				SelectedClassMeta meta=SelectedClass.getInstance().getMeta();
+				meta.setFullPath(cPath);
+				meta.setName(claName);
+				meta.setProjectPath(pPath);
+				meta.setProjectName(jpName);
+				MessageDialog.openInformation(shell,"Modeling",meta.toString());
 				return;
 			}
 		}

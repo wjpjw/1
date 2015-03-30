@@ -1,9 +1,5 @@
 package visualization.views;
 
-
-
-import org.eclipse.jface.action.Action;
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
@@ -40,10 +36,6 @@ public class ModelDispView extends ViewPart {
 
 	}
 	
-	private void showMessage(String title, String message) {
-		MessageDialog.openInformation(label.getShell(),title,message);
-	}
-
 	/**
 	 * Passing the focus request to the viewer's control.
 	 */
