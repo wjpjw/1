@@ -39,7 +39,7 @@
          point="org.eclipse.ui.popupMenus">
       <objectContribution
             objectClass="org.eclipse.jdt.core.IJavaElement"
-            id="visualization.popup.actions.PopupMenu">
+            id="visualization.popup.actions.PopupMenus">
          <menu
                label="Statecharts Modeling"
                path="additions"
@@ -48,19 +48,19 @@
                   name="group1">
             </separator>
          </menu>
-         <action
-               label="Automatic Modeling"
-               class="visualization.popup.actions.ModelingAction"
-               menubarPath="visualization.popup.actions.PopupMenu1/group1"
-               enablesFor="1"
-               id="visualization.popup.actions.ModelingAction1">
-         </action>
           <action
                label="Model Checking"
                class="visualization.popup.actions.CheckAction"
                menubarPath="visualization.popup.actions.PopupMenu1/group1"
                enablesFor="1"
-               id="visualization.popup.actions.ModelingAction2">
+               id="visualization.popup.actions.CheckingAction">
+         </action>
+                  <action
+               label="Automatic Modeling"
+               class="visualization.popup.actions.ModelingAction"
+               menubarPath="visualization.popup.actions.PopupMenu1/group1"
+               enablesFor="1"
+               id="visualization.popup.actions.ModelingAction">
          </action>
       </objectContribution>
    </extension>

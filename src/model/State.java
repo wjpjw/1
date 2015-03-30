@@ -3,18 +3,23 @@ package model;
 public class State{
 	boolean is_exception;
 	String name;
+	public State(boolean is_exception, String name) {
+		super();
+		this.is_exception = is_exception;
+		this.name = name;
+	}
+	public boolean isIs_exception() {
+		return is_exception;
+	}
+	public void setIs_exception(boolean is_exception) {
+		this.is_exception = is_exception;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 }
 
 
-//每个函数前的注释格式改成下面这种
-/*
-* Full >> push(size==MAX_INT) >> OF 
-* Empty >> push() >> Full
-* */
-
-/*
- *  Full --> push(size==MAX_INT)--> OF 
- *  这里Full为preState，OF为postState
- *  size==MAX_INT为condition。
- *  
- */
