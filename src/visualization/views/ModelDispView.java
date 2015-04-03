@@ -8,6 +8,8 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.SWT;
 
+import config.Config;
+
 public class ModelDispView extends ViewPart {
 
 	/**
@@ -29,11 +31,9 @@ public class ModelDispView extends ViewPart {
 	 */
 	public void createPartControl(Composite parent) {
         label = new Label(parent, SWT.WRAP);
-        ImageData newImageData = new ImageData("C:/Users/Administrator/Desktop/statecharts/drag.PNG").scaledTo(800, 600);
+        ImageData newImageData = new ImageData(Config.get_statechart_path());//.scaledTo(800, 600);
         Image tmpImage=new Image(Display.getCurrent(), newImageData);
         label.setImage(tmpImage);
-  		
-
 	}
 	
 	/**

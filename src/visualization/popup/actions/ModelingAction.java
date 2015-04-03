@@ -16,6 +16,8 @@ import org.eclipse.ui.ISelectionService;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.internal.Workbench;
 
+import visualization.Visualization;
+
 
 
 @SuppressWarnings("restriction")
@@ -44,19 +46,22 @@ public class ModelingAction implements IObjectActionDelegate {
 			if (element instanceof ICompilationUnit) 
 			{
 				ICompilationUnit iFile = (ICompilationUnit) element;
-				String claName = iFile.getElementName();
-				claName = claName.replace(".java", "");
-				String cPath = iFile.getPath().toString();
-				IJavaProject jp = iFile.getJavaProject();
-			    IProject project = jp.getProject();
-				String jpName = jp.getElementName();
-				String pPath = project.getRawLocationURI().toString();
-				pPath = pPath.substring(6);
+				String class_name = iFile.getElementName();
+				class_name = class_name.replace(".java", "");
+				String full_path = iFile.getPath().toString();
+				IJavaProject java_project = iFile.getJavaProject();
+			    IProject project = java_project.getProject();
+				String project_name = java_project.getElementName();
+				String project_path = project.getRawLocationURI().toString();
+				project_path = project_path.substring(6);
 				SelectedClassMeta meta=SelectedClass.getInstance().getMeta();
-				meta.setFullPath(cPath);
-				meta.setName(claName);
-				meta.setProjectPath(pPath);
-				meta.setProjectName(jpName);
+				meta.setFullPath(full_path);
+				meta.setName(class_name);
+				meta.setProjectPath(project_path);
+				meta.setProjectName(project_name);
+				//modeling code here...
+				//...TBD...
+				Visualization.get_instance().visualize_statechart();
 				MessageDialog.openInformation(shell,"Modeling",meta.toString());
 				return;
 			}
