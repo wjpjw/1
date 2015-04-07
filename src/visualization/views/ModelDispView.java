@@ -1,14 +1,13 @@
 package visualization.views;
 
+import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.part.*;
-import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.graphics.ImageData;
+import org.eclipse.swt.events.PaintEvent;
+import org.eclipse.swt.events.PaintListener;
 import org.eclipse.swt.SWT;
 
-import config.Config;
+import visualization.views.delegation.ModelDispViewDelegation;
 
 public class ModelDispView extends ViewPart {
 
@@ -17,8 +16,7 @@ public class ModelDispView extends ViewPart {
 	 */
 	public static final String ID = "wjp_view.views.WJPView";
 
-    private Label label;
-    
+    private Canvas canvas=null;
 	/**
 	 * The constructor.
 	 */
@@ -30,12 +28,20 @@ public class ModelDispView extends ViewPart {
 	 * to create the viewer and initialize it.
 	 */
 	public void createPartControl(Composite parent) {
-        label = new Label(parent, SWT.WRAP);
-        ImageData newImageData = new ImageData(Config.get_statechart_path());//.scaledTo(800, 600);
-        Image tmpImage=new Image(Display.getCurrent(), newImageData);
-        label.setImage(tmpImage);
+        ModelDispViewDelegation.get_instance().set_up_model_disp_view(this);
+		canvas= new Canvas(parent, SWT.WRAP);
+		canvas.addPaintListener(new PaintListener() {
+			public void paintControl(PaintEvent arg0) {
+				ModelDispViewDelegation.get_instance().get_vs().draw(arg0.gc);
+			}
+		});
 	}
 	
+	public void refresh_label_image(){
+		if(canvas!=null){
+			canvas.redraw();
+		}
+	}
 	/**
 	 * Passing the focus request to the viewer's control.
 	 */
