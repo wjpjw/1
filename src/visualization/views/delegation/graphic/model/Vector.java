@@ -16,12 +16,17 @@ public class Vector {
 		this.x+=v.x;
 		this.y+=v.y;
 	}
+	public int int_x(int scale){
+		return (int)(x*scale);
+	}
+	public int int_y(int scale){
+		return (int)(y*scale);
+	}
 	public double size(){
 		return Math.pow(x*x+y*y, 0.5);
 	}
-	public void scale_to_meta(){
-		x/=size();
-		y/=size();
+	public Vector scale_to_min(){
+		return new Vector(x/size(),y=y/size());
 	}
 	public Vector vertical() {
 		return new Vector(y,-x);

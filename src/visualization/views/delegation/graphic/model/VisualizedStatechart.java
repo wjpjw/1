@@ -3,6 +3,8 @@ package visualization.views.delegation.graphic.model;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Point;
 
@@ -51,7 +53,10 @@ public class VisualizedStatechart{
 		transition_curve_map.put(transition, new Curve(state_pair,state_position_map,transition));
 	}
 	public void draw(GC gc) {
+		gc.setBackground(new Color(null, 255, 255, 255));
+		gc.fillRectangle(0, 0, Config.get_canvas_size().x, Config.get_canvas_size().y);
 		//[0] bound rectangle
+		gc.setForeground(new Color(null, 0, 0, 0));
 		gc.setLineWidth(10);
 	    gc.drawRectangle(0,0,Config.get_canvas_size().x,Config.get_canvas_size().y);
 	    //[1] state rectangles
@@ -68,6 +73,7 @@ public class VisualizedStatechart{
 	    //[2] transition curves
 	    gc.setLineWidth(1);
 	    for (int i = 0; i < transitions.size(); i++) {
+	    	gc.setForeground(new Color(null, (33*i)%255, (17*i)%25, (59*i)%255));
 			Transition transition=transitions.get(i);
 			Curve transition_curve=transition_curve_map.get(transition);
 	    	if(transition_curve==null)return;

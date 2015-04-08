@@ -2,12 +2,9 @@ package visualization.views.delegation.graphic.model;
 
 import java.util.HashMap;
 
-import javax.management.MBeanAttributeInfo;
-
 import model.State;
 import model.Transition;
 
-import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Path;
 import org.eclipse.swt.graphics.Point;
 
@@ -22,9 +19,10 @@ public class Curve {
 	private TransitionStatePair state_pair;
 	private Transition t;
 	public Point start,dest,control1,control2,control3,control4,mid;
-	public static int arrow_len=30;
+	public static int arrow_len=20;
 	public static int arrow_width=5;
 	private Direction direction=Direction.ToEast;
+	private Vector tangent_on_dest;  
 	enum Direction{
 		ToEast,ToWest,ToNorth,ToSouth
 	}
@@ -40,19 +38,24 @@ public class Curve {
 		path.cubicTo(control1.x, control1.y, control2.x, control2.y, mid.x,mid.y);
 		path.cubicTo(control3.x, control3.y, control4.x, control4.y, dest.x, dest.y);
 		determine_arrows();
+		
+		
+	
 	}
 	private void determine_arrows(){
-		//determine_dest_direction
-		int x=dest.x-control4.x;
-		int y=dest.y-control4.y;
-		Vector vector1=new Vector(x,y);
-		vector1.scale_to_meta();
-		Vector vector2=vector1.vertical();
-		Point mid_backword=new Point(dest.x-(int)(vector1.x*arrow_len), dest.y-(int)(vector1.y*arrow_len));
-		Point arrow_tail1=new Point(mid_backword.x+(int)(vector2.x*arrow_width), mid_backword.y+(int)(vector2.y*arrow_width));
-		Point arrow_tail2=new Point(mid_backword.x-(int)(vector2.x*arrow_width), mid_backword.y-(int)(vector2.y*arrow_width));
+		if(is_straight()){
+			tangent_on_dest=new Vector(dest.x-start.x,dest.y-start.y).scale_to_min();
+		}
+		else{
+			tangent_on_dest=new Vector(dest.x-control4.x,dest.y-control4.y).scale_to_min();//ÇÐÏß
+		}
+		Vector normal_on_dest=tangent_on_dest.vertical();//·¨Ïß
 		arrow1.moveTo(dest.x, dest.y);
 		arrow2.moveTo(dest.x, dest.y);
+		
+		Point orthocenter=new Point(dest.x-tangent_on_dest.int_x(arrow_len), dest.y-tangent_on_dest.int_y(arrow_len));
+		Point arrow_tail1=new Point(orthocenter.x+normal_on_dest.int_x(arrow_width), orthocenter.y+normal_on_dest.int_y(arrow_width));
+		Point arrow_tail2=new Point(orthocenter.x-normal_on_dest.int_x(arrow_width), orthocenter.y-normal_on_dest.int_y(arrow_width));
 		arrow1.lineTo(arrow_tail1.x, arrow_tail1.y);
 		arrow2.lineTo(arrow_tail2.x, arrow_tail2.y);
 	}
