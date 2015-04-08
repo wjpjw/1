@@ -39,6 +39,7 @@
          point="org.eclipse.ui.popupMenus">
       <objectContribution
             objectClass="org.eclipse.jdt.core.IJavaElement"
+            adaptable="true"
             id="visualization.popup.actions.PopupMenus">
          <menu
                label="Statecharts Modeling"
@@ -49,13 +50,20 @@
             </separator>
          </menu>
           <action
+               label="Generate Annotation"
+               class="modeling.com.test.popmenu.popup.actions.NewTransitionAction"
+               menubarPath="visualization.popup.actions.PopupMenu1/group1"
+               enablesFor="1"
+               id="com.test.popmenu.newTransitionAction">
+         </action>
+          <action
                label="Model Checking"
                class="visualization.popup.actions.CheckAction"
                menubarPath="visualization.popup.actions.PopupMenu1/group1"
                enablesFor="1"
                id="visualization.popup.actions.CheckingAction">
          </action>
-                  <action
+         <action
                label="Automatic Modeling"
                class="visualization.popup.actions.ModelingAction"
                menubarPath="visualization.popup.actions.PopupMenu1/group1"
@@ -64,5 +72,48 @@
          </action>
       </objectContribution>
    </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="visualization.commands.ModelingCommandHandler"
+            id="visualization.commands.ModelingCommand"
+            name="ModelChecking">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="toolbar:org.eclipse.ui.main.toolbar">
+         <toolbar
+               id="ModelingToolBar">
+            <command
+                  commandId="visualization.commands.ModelingCommand"
+                  icon="icons/mc.png"
+                  style="push"
+                  tooltip="Start Modeling">
+            </command>
+         </toolbar>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="menu:org.eclipse.ui.main.menu">
+         <menu
+               id="ModelingMenu"
+               label="Statecharts Modeling">
+            <command
+                  commandId="visualization.commands.ModelingCommand"
+                  icon="icons/mc.png"
+                  label="Modeling"
+                  style="push"
+                  tooltip="Start Modeling">
+            </command>
+         </menu>
+      </menuContribution>
+   </extension>
+   
    
 </plugin>
