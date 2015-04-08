@@ -38,9 +38,6 @@ public class Curve {
 		path.cubicTo(control1.x, control1.y, control2.x, control2.y, mid.x,mid.y);
 		path.cubicTo(control3.x, control3.y, control4.x, control4.y, dest.x, dest.y);
 		determine_arrows();
-		
-		
-	
 	}
 	private void determine_arrows(){
 		if(is_straight()){

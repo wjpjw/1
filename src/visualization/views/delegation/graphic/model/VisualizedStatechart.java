@@ -67,7 +67,11 @@ public class VisualizedStatechart{
 	    	if(state_pos==null)return;
 	    	int width=Config.get_state_rectangle_size().x;
 	    	int height=Config.get_state_rectangle_size().y;
+	    	if(state.isIs_exception()){
+	    		gc.setForeground(new Color(null, 255, 0, 0));
+	    	}
 	    	gc.drawRectangle(state_pos.x-width/2,state_pos.y-height/2,width,height);
+    		gc.setForeground(new Color(null, 0, 0, 0));
 			gc.drawText(state.getName(), state_pos.x-width+10, state_pos.y-height/2-10);
 		}
 	    //[2] transition curves
