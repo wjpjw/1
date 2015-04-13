@@ -10,53 +10,66 @@ import java.util.Iterator;
 import model.State;
 import model.Statechart;
 import model.Transition;
-import modeling.Recognizer.AnalysisType;
-import modeling.Recognizer.JavaAnnotationRecognizer;
-import modeling.Recognizer.Recognizer;
+import modeling.Extractor.CodeType;
+import modeling.Extractor.Extractor;
+import modeling.Extractor.JavaAnnotationExtractor;
 
 public class ReadJavaToStatechart {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ReadJavaToStatechart hello = new ReadJavaToStatechart();
-		
-		hello.readFile(new File("f:\\test.java"));
+
+		hello.readFile(new File("F:/bishe_workspace/CRFBoard/src/wangy/board/questionexpert/LineChipper.java"));
 	}
-	
+
 	ScannerImpl scanner = new ScannerImpl();
-	Recognizer javaAnoRecognizer = new JavaAnnotationRecognizer();
+	Extractor javaAnoExtractor = new JavaAnnotationExtractor();
 	JavaAnnotationAnalyst javaAnnotationAnalyst = new JavaAnnotationAnalyst();
-	
-	public Statechart readFile(File file) {
-		
-			if (file.exists()) {				
-				String str;
-				while(!(str=scanner.ScanSentence(file)).equals("end")){
-//					str = str+"\r\n";
-//					System.out.println("produce:"+str);
-					Iterator<RecognizedString> res = javaAnoRecognizer.interpretLanguage(str);
-					while(res.hasNext()){
-						RecognizedString rs = res.next();
-						if(rs.getKey().equals(AnalysisType.ANOTATION)){
-							javaAnnotationAnalyst.analysis(rs.getStr());
-						}						
+
+	public void readFile(File file) {
+
+		if (file.exists()) {
+			String str;
+			while (!(str = scanner.ScanSentence(file)).equals("end")) {
+				// str = str+"\r\n";
+				// System.out.println("produce:"+str);
+				Iterator<RecognizedString> stateRes = javaAnoExtractor
+						.interpretLanguage(str);
+				while (stateRes.hasNext()) {
+					RecognizedString rs = stateRes.next();
+					if (rs.getKey().equals(CodeType.ANOTATION)) {
+//						System.out.println(rs.getStr());
+						javaAnnotationAnalyst.analysisState(rs.getStr());
 					}
 				}
 				
-				Statechart s = javaAnnotationAnalyst.getStatechart();
-				ArrayList<State> sIter =  s.getStates();
-				ArrayList<Transition> tIter = s.getTransitions();
-				
-				return s;
-				
-				
-			}else{
-				System.out.println("file does not exists");
-				return null;
+				Iterator<RecognizedString> transitionRes = javaAnoExtractor
+						.interpretLanguage(str);
+				while (transitionRes.hasNext()) {
+					RecognizedString rs = transitionRes.next();
+					if (rs.getKey().equals(CodeType.ANOTATION)) {
+//						System.out.println(rs.getStr());
+						javaAnnotationAnalyst.analysisTransition(rs.getStr());
+					}
+				}
+			}
+
+			Statechart statechart = javaAnnotationAnalyst.getStatechart();
+
+			System.out.println(statechart.getStates().size());
+			for(State state : statechart.getStates()){
+				System.out.println(state.getName()+state.isIs_init()+state.isIs_exception());
+			}
+			for(Transition transition : statechart.getTransitions()){
+				System.out.println(transition.getMethod());
 			}
 			
 
+		} else {
+			System.out.println("file does not exists");
+		}
+
 	}
 
-	
 }

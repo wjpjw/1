@@ -6,8 +6,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-import modeling.Recognizer.JavaAnnotationRecognizer;
-import modeling.Recognizer.Recognizer;
+import modeling.Extractor.Extractor;
+import modeling.Extractor.JavaAnnotationExtractor;
 
 
 public class ScannerImpl{

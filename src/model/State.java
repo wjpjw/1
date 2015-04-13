@@ -45,4 +45,21 @@ public class State {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	@Override
+	public boolean equals(Object object){
+		State state = (State)object;
+		if(name.equals(state.getName())){
+			if((is_init && state.isIs_init()) || (!is_init) && (!state.isIs_init())){
+				if((is_exception && state.isIs_exception()) || (!is_exception) && (!state.isIs_exception())){
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	@Override
+	public int hashCode(){
+		return name.hashCode();
+	}
 }

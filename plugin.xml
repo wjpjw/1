@@ -51,7 +51,7 @@
          </menu>
           <action
                label="Generate Annotation"
-               class="modeling.com.test.popmenu.popup.actions.NewTransitionAction"
+               class="modeling.com.test.popmenu.popup.actions.GenerateAnnotationAction"
                menubarPath="visualization.popup.actions.PopupMenu1/group1"
                enablesFor="1"
                id="com.test.popmenu.newTransitionAction">

@@ -7,32 +7,50 @@ import model.State;
 import model.Statechart;
 import model.Transition;
 import modeling.sign.ElementSign;
-import modeling.sign.JavaStatetransSign;
+import modeling.sign.impl.JavaStateSign;
+import modeling.sign.impl.JavaTransitionSign;
 
 public class JavaAnnotationAnalyst {
 
 	private Statechart statechart;
 	// private ArrayList<ElementSign> signList;
-	private JavaStatetransSign javaStatetransSign;
+	private JavaStateSign javaStateSign;
+	private JavaTransitionSign javaStatetransSign;
 
 	public JavaAnnotationAnalyst() {
 		statechart = new Statechart();
 		// signList = new ArrayList<ElementSign>();
-		javaStatetransSign = new JavaStatetransSign();
+		javaStateSign = new JavaStateSign();
+		javaStatetransSign = new JavaTransitionSign();
 	}
 
-	public void analysis(String line) {
-		// for (ElementSign sign : signList) {
-		if (javaStatetransSign.hasThisSign(line)) {
-			Iterator<State> stateIter = javaStatetransSign.stateExtract(line);
-			while (stateIter.hasNext()) {
-				statechart.addState(stateIter.next());
+	public void analysisState(String line) {
+		if (javaStateSign.hasThisSign(line)) {
+			State state = javaStateSign.stateExtractState(line);
+			if(!statechart.getStates().contains(state)){
+				statechart.addState(state);
 			}
-			
-			Transition transition = javaStatetransSign.transitionExtract(line);
+		
+		}
+	}
+
+	// public void analysisTransition(String line) {
+	// if (javaStatetransSign.hasThisSign(line)) {
+	// Iterator<State> stateIter = javaStatetransSign.stateExtract(line);
+	// while (stateIter.hasNext()) {
+	// statechart.addState(stateIter.next());
+	// }
+	//
+	// Transition transition = javaStatetransSign.transitionExtract(line);
+	// statechart.addTransition(transition);
+	// }
+	// }
+
+	public void analysisTransition(String line) {	
+		if (javaStatetransSign.hasThisSign(line)) {		
+			Transition transition = javaStatetransSign.transitionExtract(line,statechart.getStates());
 			statechart.addTransition(transition);		
 		}
-		// }
 	}
 
 	public Statechart getStatechart() {
@@ -43,14 +61,12 @@ public class JavaAnnotationAnalyst {
 		this.statechart = statechart;
 	}
 
-	public JavaStatetransSign getJavaStatetransSign() {
+	public JavaTransitionSign getJavaStatetransSign() {
 		return javaStatetransSign;
 	}
 
-	public void setJavaStatetransSign(JavaStatetransSign javaStatetransSign) {
+	public void setJavaStatetransSign(JavaTransitionSign javaStatetransSign) {
 		this.javaStatetransSign = javaStatetransSign;
 	}
-	
-	
 
 }
