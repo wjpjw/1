@@ -8,6 +8,7 @@ import model.SelectedClassMeta;
 import model.State;
 import model.Statechart;
 import model.Transition;
+import modeling.mybishe.ReadJavaToStatechart;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -48,11 +49,13 @@ public class ModelingCommandHandler extends AbstractHandler implements IHandler 
 				meta.setProjectPath(project_path);
 				meta.setProjectName(project_name);
 				
-//				String path=project_path.substring(0, project_path.length()-project_name.length()-1);
-//				path+=full_path;
-//				ReadJavaToStatechart toStatechart = new ReadJavaToStatechart();		
-//				Statechart statechart=toStatechart.readFile(new File(path));
-//				SelectedClass.getInstance().setStatechart(statechart);
+				String path=project_path.substring(0, project_path.length()-project_name.length()-1);
+				path+=full_path;
+				ReadJavaToStatechart toStatechart = new ReadJavaToStatechart();		
+				Statechart statechart=toStatechart.readFile(new File(path));
+				System.out.println(statechart.getStates().size());
+				
+				SelectedClass.getInstance().getStatechart().copy_from(statechart);;
 				
 				ModelDispViewDelegation.get_instance().visualize_statechart();
 				MessageDialog.openInformation(null,"Modeling",meta.toString());

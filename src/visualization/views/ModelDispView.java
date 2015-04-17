@@ -39,7 +39,7 @@ public class ModelDispView extends ViewPart {
 	
 	public void refresh_label_image(){
 		if(canvas!=null){
-			canvas.redraw();
+//			canvas.redraw();
 		}
 	}
 	/**
