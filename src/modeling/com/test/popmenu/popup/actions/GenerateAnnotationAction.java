@@ -237,7 +237,7 @@ public class GenerateAnnotationAction implements IObjectActionDelegate {
 			}
 
 		}
-		MessageDialog.openInformation(shell, "Cat", "New Action was executed.");
+//		MessageDialog.openInformation(shell, "Cat", "New Action was executed.");
 
 	}
 
