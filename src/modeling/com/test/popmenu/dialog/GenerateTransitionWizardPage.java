@@ -90,7 +90,7 @@ public class GenerateTransitionWizardPage extends WizardPage {
 		
 		//transition MethodName
 		label = new Label(composite, SWT.NONE);
-		label.setText("TransitionName: ");
+		label.setText("MethodName: ");
 		label.setLayoutData(new GridData(SWT.BEGINNING, SWT.BEGINNING, false,
 				false, 1, 1));
 		
