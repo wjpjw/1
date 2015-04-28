@@ -48,9 +48,10 @@ public class ModelingCommandHandler extends AbstractHandler implements IHandler 
 				meta.setName(class_name);
 				meta.setProjectPath(project_path);
 				meta.setProjectName(project_name);
-				
 				String path=project_path.substring(0, project_path.length()-project_name.length()-1);
 				path+=full_path;
+				System.out.println("~~"+path);
+				
 				ReadJavaToStatechart toStatechart = new ReadJavaToStatechart();		
 				Statechart statechart=toStatechart.readFile(new File(path));
 				System.out.println(statechart.getStates().size());
