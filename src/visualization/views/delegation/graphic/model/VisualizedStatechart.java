@@ -22,6 +22,9 @@ public class VisualizedStatechart{
 	private ArrayList<Transition> transitions=SelectedClass.getInstance().getStatechart().getTransitions();
 	private ArrayList<State> states=SelectedClass.getInstance().getStatechart().getStates();
 	private TransitionStatePairList transition_state_pair_list=new TransitionStatePairList();
+	private static final int state_line_width=2;
+	private static final int init_state_line_width=6;
+	private static final int border_width=10;
 	public void def_self(){
 		auto_def_state_positions();
 		auto_def_transition_curves();
@@ -57,7 +60,7 @@ public class VisualizedStatechart{
 		gc.fillRectangle(0, 0, Config.get_canvas_size().x, Config.get_canvas_size().y);
 		//[0] bound rectangle
 		gc.setForeground(new Color(null, 0, 0, 0));
-		gc.setLineWidth(10);
+		gc.setLineWidth(border_width);
 	    gc.drawRectangle(0,0,Config.get_canvas_size().x,Config.get_canvas_size().y);
 	    //[1] state rectangles
 	    gc.setLineWidth(3);
@@ -70,7 +73,11 @@ public class VisualizedStatechart{
 	    	if(state.isIs_exception()){
 	    		gc.setForeground(new Color(null, 255, 0, 0));
 	    	}
+	    	if(state.isIs_init()){
+	    		gc.setLineWidth(init_state_line_width);
+	    	}
 	    	gc.drawRectangle(state_pos.x-width/2,state_pos.y-height/2,width,height);
+	    	gc.setLineWidth(state_line_width);
     		gc.setForeground(new Color(null, 0, 0, 0));
 			gc.drawText(state.getName(), state_pos.x-width+10, state_pos.y-height/2-10);
 		}
