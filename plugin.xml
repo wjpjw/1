@@ -15,6 +15,11 @@
             class="visualization.views.ModelDispView"
             id="visualization.views.ModelDispView">
       </view>
+      <view
+            class="checking.view.View"
+            id="checking.view.View"
+            name="New ViewPart">
+      </view>
    </extension>
    <extension
          point="org.eclipse.ui.perspectiveExtensions">
