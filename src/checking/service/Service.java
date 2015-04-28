@@ -20,12 +20,13 @@ public class Service {
 		return defects;
 	}
 
-	public Defect searchDefect(State state){
+	public ArrayList<Defect> searchDefect(State state){
+		ArrayList<Defect> results = new ArrayList<Defect>(); 
 		for(int i=0;i<defects.size();i++){
 			if(state.equals(defects.get(i).getRelatedState()))
-					return defects.get(i);
+				results.add(defects.get(i));
 		}
-		return null;
+		return results;
 	}
 	
 	public void setDefects(ArrayList<Defect> defects) {

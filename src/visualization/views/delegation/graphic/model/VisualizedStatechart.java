@@ -86,6 +86,7 @@ public class VisualizedStatechart{
 					buffer.append(defects.get(i).getDescription()).append("|");
 				}
 	    	}
+	    	gc.drawText(buffer.toString(), state_pos.x, state_pos.y);
 	    	gc.drawRectangle(state_pos.x-width/2,state_pos.y-height/2,width,height);
 	    	gc.setLineWidth(state_line_width);
     		gc.setForeground(new Color(null, 0, 0, 0));
