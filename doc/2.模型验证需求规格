@@ -4,3 +4,10 @@
 3. 将结果存储在一个“缺陷”数据结构中，“缺陷”的属性：涉及状态，缺陷类型描述。
 4. eclipse插件，有个model checking的选项，弹个框说明有哪些状态图缺陷。
 5. 自动调用状态图的可视化模块。
+
+
+需求细化：
+1. 实现一个view（CheckingResultView），用于呈现model checking的结果。
+2. 在MC按钮按下之后先modeling，再checking，最后启动visualization。
+3. checking的代码主要是对statechart进行检查，把结果存放在一个CheckingResult类对象里，并且初始化CheckingResultView。
+ 

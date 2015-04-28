@@ -54,8 +54,10 @@ public class ModelingCommandHandler extends AbstractHandler implements IHandler 
 				ReadJavaToStatechart toStatechart = new ReadJavaToStatechart();		
 				Statechart statechart=toStatechart.readFile(new File(path));
 				System.out.println(statechart.getStates().size());
-				
 				SelectedClass.getInstance().getStatechart().copy_from(statechart);;
+			
+				// checking...
+				
 				
 				ModelDispViewDelegation.get_instance().visualize_statechart();
 				MessageDialog.openInformation(null,"Modeling",meta.toString());
