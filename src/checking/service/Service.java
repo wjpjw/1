@@ -20,7 +20,7 @@ public class Service {
 		return defects;
 	}
 
-	public Defect existsDefect(State state){
+	public Defect searchDefect(State state){
 		for(int i=0;i<defects.size();i++){
 			if(state.equals(defects.get(i).getRelatedState()))
 					return defects.get(i);

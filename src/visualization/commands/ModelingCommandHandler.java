@@ -20,6 +20,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.ISelectionService;
 import org.eclipse.ui.internal.Workbench;
 
+import checking.factory.ServiceFactory;
 import visualization.views.delegation.ModelDispViewDelegation;
 
 @SuppressWarnings("restriction")
@@ -55,7 +56,7 @@ public class ModelingCommandHandler extends AbstractHandler implements IHandler 
 				SelectedClass.getInstance().getStatechart().copy_from(statechart);;
 			
 				// checking...
-				
+				ServiceFactory.getServiceInstance().check(SelectedClass.getInstance().getStatechart());
 				
 				ModelDispViewDelegation.get_instance().visualize_statechart();
 				return null;

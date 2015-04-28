@@ -8,7 +8,9 @@ import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Point;
 
+import checking.factory.ServiceFactory;
 import config.Config;
+import model.Defect;
 import model.SelectedClass;
 import model.State;
 import model.Transition;
@@ -75,6 +77,14 @@ public class VisualizedStatechart{
 	    	}
 	    	if(state.isIs_init()){
 	    		gc.setLineWidth(init_state_line_width);
+	    	}
+	    	ArrayList<Defect> defects=ServiceFactory.getServiceInstance().searchDefect(state);
+	    	StringBuffer buffer=new StringBuffer();
+	    	if(defects.size()>0){
+	    		buffer.append("Defects:");
+	    		for (int j = 0; j < defects.size(); j++) {
+					buffer.append(defects.get(i).getDescription()).append("|");
+				}
 	    	}
 	    	gc.drawRectangle(state_pos.x-width/2,state_pos.y-height/2,width,height);
 	    	gc.setLineWidth(state_line_width);
