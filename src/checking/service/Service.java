@@ -10,8 +10,18 @@ public class Service {
 
 	private static Service service = new Service();
 
+	private ArrayList<Defect> defects;
+	
 	private Service() {
 
+	}
+
+	public ArrayList<Defect> getDefects() {
+		return defects;
+	}
+
+	public void setDefects(ArrayList<Defect> defects) {
+		this.defects = defects;
 	}
 
 	public static Service getInstance() {
@@ -23,13 +33,22 @@ public class Service {
 		if (stateChart == null)
 			return null;
 
+		
 		ArrayList<Transition> tl = stateChart.getTransitions();
 		int len = tl.size();
-		ArrayList<State> list1 = new ArrayList<State>(); //可达状态集
-		ArrayList<State> list2 = stateChart.getStates(); //不可达状态集
-		ArrayList<State> list3 = stateChart.getStates(); //无法到达其他状态集
-		ArrayList<Defect> defects = new ArrayList<Defect>();
+		ArrayList<State> list1 = new ArrayList<State>(); // 可达状态集
+		ArrayList<State> list2 = stateChart.getStates(); // 不可达状态集
+		ArrayList<State> list3 = stateChart.getStates(); // 无法到达其他状态集
 
+		for(int i=0;i<list2.size();i++){
+			if(list2.get(i).isIs_exception()&&list2.get(i).isIs_init()){
+				Defect defect = new Defect();
+				defect.setRelatedState(list2.get(i));
+				defect.setDescription("此状态既为初始点又为异常，对应函数规格可能存在错误！");
+				defects.add(defect);
+			}
+		}
+		
 		for (int i = 0; i < len; i++) {
 			Transition transition = tl.get(i);
 			if (transition.getPreState() != null
@@ -69,7 +88,7 @@ public class Service {
 		}
 
 		for (int i = 0; i < list2.size(); i++) {
-			
+
 			String description = "此状态不可达，对应函数规格可能存在错误！";
 			Defect defect = new Defect();
 			defect.setRelatedState(list2.get(i));
@@ -80,7 +99,13 @@ public class Service {
 
 		for (int i = 0; i < list3.size(); i++) {
 			
-			String description = "此状态无法到达其他任何普通状态！";
+			String description = "";
+
+			if (!list3.get(i).isIs_exception())
+				description = "此状态无法到达其他任何普通状态！";
+			else
+				description = "此异常状态能到达普通状态，对应函数规格可能存在错误！";
+			
 			Defect defect = new Defect();
 			defect.setRelatedState(list3.get(i));
 			defect.setDescription(description);
