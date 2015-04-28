@@ -27,7 +27,7 @@ public class ReadJavaToStatechart {
 	Extractor javaAnoExtractor = new JavaAnnotationExtractor();
 	JavaAnnotationAnalyst javaAnnotationAnalyst = new JavaAnnotationAnalyst();
 
-	public void readFile(File file) {
+	public Statechart readFile(File file) {
 
 		if (file.exists()) {
 			String str;
@@ -57,19 +57,20 @@ public class ReadJavaToStatechart {
 
 			Statechart statechart = javaAnnotationAnalyst.getStatechart();
 
-			System.out.println(statechart.getStates().size());
-			for(State state : statechart.getStates()){
-				System.out.println(state.getName()+state.isIs_init()+state.isIs_exception());
-			}
-			for(Transition transition : statechart.getTransitions()){
-				System.out.println(transition.getMethod());
-			}
-			
+//			System.out.println(statechart.getStates().size());
+//			for(State state : statechart.getStates()){
+//				System.out.println(state.getName()+state.isIs_init()+state.isIs_exception());
+//			}
+//			for(Transition transition : statechart.getTransitions()){
+//				System.out.println(transition.getMethod());
+//			}
+			return statechart;
+
 
 		} else {
 			System.out.println("file does not exists");
 		}
-
+		return null;
 	}
 
 }

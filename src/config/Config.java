@@ -8,7 +8,7 @@ public class Config {
 		return "C:/Users/Administrator/Desktop/statecharts/";
 	}
 	public static Point get_canvas_size(){
-		return new Point(800, 430);
+		return new Point(1200, 800);
 	}
 	public static Point get_state_rectangle_size() {
 		return new Point(45,25);
