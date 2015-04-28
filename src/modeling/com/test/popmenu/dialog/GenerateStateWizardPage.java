@@ -3,6 +3,7 @@ package modeling.com.test.popmenu.dialog;
 import java.util.ArrayList;
 
 import model.State;
+import modeling.com.test.popmenu.key.ComboKey;
 
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;

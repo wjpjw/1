@@ -5,10 +5,12 @@ import java.util.Iterator;
 
 import model.State;
 import model.Transition;
-import modeling.Extractor.CodeType;
+import modeling.Extractor.interf.CodeType;
 import modeling.sign.ElementSign;
 import modeling.sign.JavaTransitionSignInterface;
 import modeling.sign.SignKey;
+
+
 
 public class JavaTransitionSign extends ElementSign implements JavaTransitionSignInterface{
 	

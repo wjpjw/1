@@ -2,6 +2,7 @@ package modeling.com.test.popmenu.dialog;
 
 import model.State;
 import model.Transition;
+import modeling.com.test.popmenu.key.ComboKey;
 
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;

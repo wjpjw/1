@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import model.State;
 import model.Transition;
+import modeling.com.test.popmenu.key.ComboKey;
 
 import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.Wizard;

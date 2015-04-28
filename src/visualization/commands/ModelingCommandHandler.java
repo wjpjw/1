@@ -1,10 +1,11 @@
 package visualization.commands;
 
 import java.io.File;
+
 import model.SelectedClass;
 import model.SelectedClassMeta;
 import model.Statechart;
-import modeling.mybishe.ReadJavaToStatechart;
+import modeling.read.ReadJavaToStatechart;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;

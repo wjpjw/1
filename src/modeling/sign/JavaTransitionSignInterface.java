@@ -1,7 +1,6 @@
 package modeling.sign;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import model.State;
 import model.Transition;
