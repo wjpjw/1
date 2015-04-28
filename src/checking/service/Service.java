@@ -20,6 +20,14 @@ public class Service {
 		return defects;
 	}
 
+	public Defect existsDefect(State state){
+		for(int i=0;i<defects.size();i++){
+			if(state.equals(defects.get(i).getRelatedState()))
+					return defects.get(i);
+		}
+		return null;
+	}
+	
 	public void setDefects(ArrayList<Defect> defects) {
 		this.defects = defects;
 	}
