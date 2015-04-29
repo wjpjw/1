@@ -1,7 +1,9 @@
 package checking.service;
 
 import java.util.ArrayList;
+
 import model.Defect;
+import model.DefectType;
 import model.State;
 import model.Statechart;
 import model.Transition;
@@ -55,6 +57,7 @@ public class Service {
 				Defect defect = new Defect();
 				defect.setRelatedState(stateChart.getStates().get(i));
 				defect.setDescription("此状态既为初始点又为异常，对应函数规格可能存在错误！");
+				defect.type=DefectType.init_from_exception;
 				defects.add(defect);
 			}
 		}
@@ -101,6 +104,7 @@ public class Service {
 
 			String description = "此状态不可达，对应函数规格可能存在错误！";
 			Defect defect = new Defect();
+			defect.type=DefectType.unreacheable;
 			defect.setRelatedState(list2.get(i));
 			defect.setDescription(description);
 			defects.add(defect);
@@ -110,13 +114,15 @@ public class Service {
 		for (int i = 0; i < list3.size(); i++) {
 			
 			String description = "";
-
-			if (!list3.get(i).isIs_exception())
-				description = "此状态无法到达其他任何普通状态！";
-			else
-				description = "此异常状态能到达普通状态，对应函数规格可能存在错误！";
-			
 			Defect defect = new Defect();
+			if (!list3.get(i).isIs_exception()){
+				description = "此状态无法到达其他任何普通状态！";
+				defect.type=DefectType.common_state_cannot_jmp_to_any_other_common_state;
+			}
+			else{
+				description = "此异常状态能到达普通状态，对应函数规格可能存在错误！";
+				defect.type=DefectType.exception_can_jmp_to_common_states;
+			}
 			defect.setRelatedState(list3.get(i));
 			defect.setDescription(description);
 			defects.add(defect);

@@ -16,6 +16,8 @@ import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.ui.part.ViewPart;
 
+import checking.factory.ServiceFactory;
+
 public class DefectView extends ViewPart {
 
 	public static final String ID = "checking.view.DefectView"; //$NON-NLS-1$
@@ -52,29 +54,7 @@ public class DefectView extends ViewPart {
 		
 		
 		//test
-		ArrayList<Defect> defects = new ArrayList<Defect>();
-		
-		State state1 = new State();
-		state1.setName("s1");
-		Defect defect1 = new Defect();
-		defect1.setRelatedState(state1);
-		defect1.setDescription("s1");
-		
-		State state2 = new State();
-		state2.setName("s2");
-		Defect defect2 = new Defect();
-		defect2.setRelatedState(state2);
-		defect2.setDescription("s2");
-		
-		State state3 = new State();
-		state3.setName("s3");
-		Defect defect3 = new Defect();
-		defect3.setRelatedState(state3);
-		defect3.setDescription("s3");
-		
-		defects.add(defect1);
-		defects.add(defect2);
-		defects.add(defect3);
+		ArrayList<Defect> defects = ServiceFactory.getServiceInstance().getDefects();
 		
 		for(int i=0;i<defects.size();i++)
 		{

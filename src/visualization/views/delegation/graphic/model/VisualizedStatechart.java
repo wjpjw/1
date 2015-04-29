@@ -64,10 +64,11 @@ public class VisualizedStatechart{
 		gc.setForeground(new Color(null, 0, 0, 0));
 		gc.setLineWidth(border_width);
 	    gc.drawRectangle(0,0,Config.get_canvas_size().x,Config.get_canvas_size().y);
-	    gc.drawText("D1: init from exception", 100, 30);
-	    gc.drawText("D2: unreacheable", 100, 60);
-	    gc.drawText("D3: exception allowed to reach common states", 100, 90);
-	    gc.drawText("D4: common state cannot reach other common states", 100, 120);
+	    
+	    gc.drawText("D1: init from exception", 10, 30);
+	    gc.drawText("D2: unreacheable", 10, 60);
+	    gc.drawText("D3: exception reaches common states", 10, 90);
+	    gc.drawText("D4: common state unable to reach common states", 10, 120);
 
 	    //[1] state rectangles
 	    gc.setLineWidth(3);
@@ -88,9 +89,11 @@ public class VisualizedStatechart{
 	    	if(defects.size()>0){
 	    		buffer.append("Defects:");
 	    		for (int j = 0; j < defects.size(); j++) {
-					buffer.append(DefectType.id(defects.get(j).type)).append("|");
+					buffer.append(DefectType.id(defects.get(j).type));
+					if(j!=defects.size()-1)
+						buffer.append("|");
 				}
-		    	gc.drawText(buffer.toString(), state_pos.x, state_pos.y);
+		    	gc.drawText(buffer.toString(), state_pos.x+30, state_pos.y-30);
 	    	}
 	    	gc.drawRectangle(state_pos.x-width/2,state_pos.y-height/2,width,height);
 	    	gc.setLineWidth(state_line_width);
