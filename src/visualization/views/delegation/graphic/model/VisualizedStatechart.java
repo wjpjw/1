@@ -3,7 +3,6 @@ package visualization.views.delegation.graphic.model;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Point;
@@ -11,6 +10,7 @@ import org.eclipse.swt.graphics.Point;
 import checking.factory.ServiceFactory;
 import config.Config;
 import model.Defect;
+import model.DefectType;
 import model.SelectedClass;
 import model.State;
 import model.Transition;
@@ -20,7 +20,7 @@ public class VisualizedStatechart{
 	private HashMap<State, Point> state_position_map=new HashMap<State, Point>();
 	private HashMap<Transition, Curve> transition_curve_map=new HashMap<Transition, Curve>();
 	private static Point center=new Point(Config.get_canvas_size().x/2, Config.get_canvas_size().y/2);
-	private static int radius=Config.get_canvas_size().y/2-10;
+	private static int radius=Config.get_canvas_size().y/2-30;//这里调整状态图相对边框的大小
 	private ArrayList<Transition> transitions=SelectedClass.getInstance().getStatechart().getTransitions();
 	private ArrayList<State> states=SelectedClass.getInstance().getStatechart().getStates();
 	private TransitionStatePairList transition_state_pair_list=new TransitionStatePairList();
@@ -64,6 +64,11 @@ public class VisualizedStatechart{
 		gc.setForeground(new Color(null, 0, 0, 0));
 		gc.setLineWidth(border_width);
 	    gc.drawRectangle(0,0,Config.get_canvas_size().x,Config.get_canvas_size().y);
+	    gc.drawText("D1: init from exception", 100, 30);
+	    gc.drawText("D2: unreacheable", 100, 60);
+	    gc.drawText("D3: exception allowed to reach common states", 100, 90);
+	    gc.drawText("D4: common state cannot reach other common states", 100, 120);
+
 	    //[1] state rectangles
 	    gc.setLineWidth(3);
 	    for (int i = 0; i < states.size(); i++) {
@@ -83,10 +88,10 @@ public class VisualizedStatechart{
 	    	if(defects.size()>0){
 	    		buffer.append("Defects:");
 	    		for (int j = 0; j < defects.size(); j++) {
-					buffer.append(defects.get(i).getDescription()).append("|");
+					buffer.append(DefectType.id(defects.get(j).type)).append("|");
 				}
+		    	gc.drawText(buffer.toString(), state_pos.x, state_pos.y);
 	    	}
-	    	gc.drawText(buffer.toString(), state_pos.x, state_pos.y);
 	    	gc.drawRectangle(state_pos.x-width/2,state_pos.y-height/2,width,height);
 	    	gc.setLineWidth(state_line_width);
     		gc.setForeground(new Color(null, 0, 0, 0));

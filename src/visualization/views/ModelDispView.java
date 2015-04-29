@@ -18,7 +18,9 @@ public class ModelDispView extends ViewPart {
 
     private Canvas canvas=null;
 	/**
-	 * The constructor.
+	 * The 
+
+.
 	 */
 	public ModelDispView() {
 	}

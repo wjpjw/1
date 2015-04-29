@@ -10,7 +10,7 @@ public class Service {
 
 	private static Service service = new Service();
 
-	private ArrayList<Defect> defects;
+	private ArrayList<Defect> defects=new ArrayList<Defect>();
 	
 	private Service() {
 

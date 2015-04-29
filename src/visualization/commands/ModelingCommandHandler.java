@@ -56,7 +56,7 @@ public class ModelingCommandHandler extends AbstractHandler implements IHandler 
 				SelectedClass.getInstance().getStatechart().copy_from(statechart);;
 			
 				// checking...
-				ServiceFactory.getServiceInstance().check(SelectedClass.getInstance().getStatechart());
+				ServiceFactory.getServiceInstance().check(statechart);
 				
 				ModelDispViewDelegation.get_instance().visualize_statechart();
 				return null;
