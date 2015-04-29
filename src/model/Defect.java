@@ -1,7 +1,6 @@
 package model;
 
 public class Defect {
-	
 	private State relatedState;
 	private String description;
 	public DefectType type;
