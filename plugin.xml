@@ -16,6 +16,14 @@
             id="visualization.views.ModelDispView">
       </view>
       <view
+            name="Defect View"
+            icon="icons/mc.png"
+            category="visualization"
+            class="checking.view.DefectView"
+            id="checking.view.DefectView">
+      </view>
+      
+      <view
             class="checking.view.View"
             id="checking.view.View"
             name="New ViewPart">
