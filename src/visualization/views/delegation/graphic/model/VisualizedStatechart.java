@@ -84,6 +84,7 @@ public class VisualizedStatechart{
 	    	if(state.isIs_init()){
 	    		gc.setLineWidth(init_state_line_width);
 	    	}
+	    	
 	    	ArrayList<Defect> defects=ServiceFactory.getServiceInstance().searchDefect(state);
 	    	StringBuffer buffer=new StringBuffer();
 	    	if(defects.size()>0){
