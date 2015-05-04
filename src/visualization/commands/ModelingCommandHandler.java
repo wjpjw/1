@@ -2,9 +2,7 @@ package visualization.commands;
 
 import java.io.File;
 
-import model.SelectedClass;
-import model.SelectedClassMeta;
-import model.Statechart;
+import modeling.model.Statechart;
 import modeling.read.ReadJavaToStatechart;
 
 import org.eclipse.core.commands.AbstractHandler;
@@ -21,6 +19,8 @@ import org.eclipse.ui.ISelectionService;
 import org.eclipse.ui.internal.Workbench;
 
 import checking.factory.ServiceFactory;
+import visualization.model.SelectedClass;
+import visualization.model.SelectedClassMeta;
 import visualization.views.delegation.ModelDispViewDelegation;
 
 @SuppressWarnings("restriction")

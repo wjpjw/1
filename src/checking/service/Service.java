@@ -2,11 +2,11 @@ package checking.service;
 
 import java.util.ArrayList;
 
-import model.Defect;
-import model.DefectType;
-import model.State;
-import model.Statechart;
-import model.Transition;
+import checking.model.Defect;
+import checking.model.DefectType;
+import modeling.model.State;
+import modeling.model.Statechart;
+import modeling.model.Transition;
 
 public class Service {
 
@@ -40,10 +40,9 @@ public class Service {
 	}
 
 	public ArrayList<Defect> check(Statechart stateChart) {
-
+		defects.clear();
 		if (stateChart == null)
 			return null;
-
 		
 		ArrayList<Transition> tl = new ArrayList<Transition>(stateChart.getTransitions());
 		int len = tl.size();

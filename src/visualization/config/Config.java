@@ -1,4 +1,4 @@
-package config;
+package visualization.config;
 
 import org.eclipse.swt.graphics.Point;
 

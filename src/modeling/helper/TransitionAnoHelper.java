@@ -2,7 +2,7 @@ package modeling.helper;
 
 import java.util.ArrayList;
 
-import model.TransitionAno;
+import modeling.model.TransitionAno;
 
 public class TransitionAnoHelper {
 

@@ -2,8 +2,8 @@ package visualization.views.delegation.graphic.model;
 
 import java.util.ArrayList;
 
-import model.State;
-import model.Transition;
+import modeling.model.State;
+import modeling.model.Transition;
 
 public class TransitionStatePair {
 	public State preState;

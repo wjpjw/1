@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import model.ExtractedString;
 import modeling.Extractor.interf.Extractor;
+import modeling.model.ExtractedString;
 
 public abstract class JavaExtractor implements Extractor{
 	

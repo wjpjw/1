@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import model.ExtractedString;
 import modeling.Extractor.interf.CodeType;
 import modeling.Extractor.interf.java.JavaExtractor;
+import modeling.model.ExtractedString;
 
 
 

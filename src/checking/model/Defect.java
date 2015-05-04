@@ -1,4 +1,6 @@
-package model;
+package checking.model;
+
+import modeling.model.State;
 
 public class Defect {
 	private State relatedState;

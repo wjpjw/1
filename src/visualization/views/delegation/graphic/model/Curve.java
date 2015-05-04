@@ -2,13 +2,13 @@ package visualization.views.delegation.graphic.model;
 
 import java.util.HashMap;
 
-import model.State;
-import model.Transition;
+import modeling.model.State;
+import modeling.model.Transition;
 
 import org.eclipse.swt.graphics.Path;
 import org.eclipse.swt.graphics.Point;
 
-import config.Config;
+import visualization.config.Config;
 
 public class Curve {
 	private Path path=new Path(null);

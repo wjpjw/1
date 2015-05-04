@@ -7,13 +7,13 @@ import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Point;
 
+import visualization.config.Config;
+import visualization.model.SelectedClass;
 import checking.factory.ServiceFactory;
-import config.Config;
-import model.Defect;
-import model.DefectType;
-import model.SelectedClass;
-import model.State;
-import model.Transition;
+import checking.model.Defect;
+import checking.model.DefectType;
+import modeling.model.State;
+import modeling.model.Transition;
 
 public class VisualizedStatechart{
 	public VisualizedStatechart() {}

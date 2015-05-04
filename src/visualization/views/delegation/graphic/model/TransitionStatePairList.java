@@ -3,7 +3,7 @@ package visualization.views.delegation.graphic.model;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import model.Transition;
+import modeling.model.Transition;
 
 public class TransitionStatePairList {
 	private ArrayList<TransitionStatePair> pairs=new ArrayList<TransitionStatePair>();

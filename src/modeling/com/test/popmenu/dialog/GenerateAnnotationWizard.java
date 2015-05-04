@@ -2,9 +2,9 @@ package modeling.com.test.popmenu.dialog;
 
 import java.util.ArrayList;
 
-import model.State;
-import model.Transition;
 import modeling.com.test.popmenu.key.ComboKey;
+import modeling.model.State;
+import modeling.model.Transition;
 
 import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.Wizard;

@@ -2,12 +2,13 @@ package checking.view;
 
 import java.util.ArrayList;
 
-import model.Defect;
-import model.State;
+import modeling.model.State;
 
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.PaintEvent;
+import org.eclipse.swt.events.PaintListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -17,6 +18,7 @@ import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.ui.part.ViewPart;
 
 import checking.factory.ServiceFactory;
+import checking.model.Defect;
 
 public class DefectView extends ViewPart {
 
@@ -51,7 +53,7 @@ public class DefectView extends ViewPart {
 		TableColumn tblclmnNewColumn_1 = new TableColumn(table, SWT.NONE);
 		tblclmnNewColumn_1.setWidth(200);
 		tblclmnNewColumn_1.setText("√Ë ˆ");
-		
+
 		
 		//test
 		ArrayList<Defect> defects = ServiceFactory.getServiceInstance().getDefects();

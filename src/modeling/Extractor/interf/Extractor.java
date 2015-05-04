@@ -2,7 +2,7 @@ package modeling.Extractor.interf;
 
 import java.util.Iterator;
 
-import model.ExtractedString;
+import modeling.model.ExtractedString;
 
 
 public interface Extractor {

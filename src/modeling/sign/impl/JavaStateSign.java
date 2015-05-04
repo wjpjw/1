@@ -1,7 +1,7 @@
 package modeling.sign.impl;
 
-import model.State;
 import modeling.Extractor.interf.CodeType;
+import modeling.model.State;
 import modeling.sign.ElementSign;
 import modeling.sign.JavaStateSignInterface;
 import modeling.sign.SignKey;

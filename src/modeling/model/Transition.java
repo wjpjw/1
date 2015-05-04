@@ -1,4 +1,4 @@
-package model;
+package modeling.model;
 //A-->Method(Condition1)-->B
 //A-->Method(Condition2)-->C
 //不同的Condition对用着不同的(prestate,poststate)的pair，这里的condition是写注释的人加上的字符串，与我们逻辑的无关，仅仅是字符串。

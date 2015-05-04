@@ -1,4 +1,6 @@
-package model;
+package visualization.model;
+
+import modeling.model.Statechart;
 
 public class SelectedClass {
 	private static SelectedClass instance=new SelectedClass();

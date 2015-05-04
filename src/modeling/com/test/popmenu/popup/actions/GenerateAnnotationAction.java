@@ -2,10 +2,10 @@ package modeling.com.test.popmenu.popup.actions;
 
 import java.util.ArrayList;
 
-import model.State;
-import model.TransitionAno;
 import modeling.com.test.popmenu.dialog.GenerateAnnotationWizard;
 import modeling.com.test.popmenu.key.ComboKey;
+import modeling.model.State;
+import modeling.model.TransitionAno;
 import modeling.read.ReadOffset;
 import modeling.sign.SignKey;
 

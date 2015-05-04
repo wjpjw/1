@@ -1,6 +1,6 @@
 package modeling.sign;
 
-import model.State;
+import modeling.model.State;
 
 public interface JavaStateSignInterface {
 	public State stateExtractState(String line);

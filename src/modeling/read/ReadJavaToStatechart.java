@@ -3,14 +3,14 @@ package modeling.read;
 import java.io.File;
 import java.util.Iterator;
 
-import model.ExtractedString;
-import model.State;
-import model.Statechart;
-import model.Transition;
 import modeling.Analyst.JavaAnnotationAnalyst;
 import modeling.Extractor.impl.java.JavaAnnotationExtractor;
 import modeling.Extractor.interf.CodeType;
 import modeling.Extractor.interf.Extractor;
+import modeling.model.ExtractedString;
+import modeling.model.State;
+import modeling.model.Statechart;
+import modeling.model.Transition;
 import modeling.scanner.ScannerImpl;
 import modeling.scanner.ScannerKey;
 

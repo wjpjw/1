@@ -3,9 +3,9 @@ package modeling.sign.impl;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import model.State;
-import model.Transition;
 import modeling.Extractor.interf.CodeType;
+import modeling.model.State;
+import modeling.model.Transition;
 import modeling.sign.ElementSign;
 import modeling.sign.JavaTransitionSignInterface;
 import modeling.sign.SignKey;

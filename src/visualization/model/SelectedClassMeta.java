@@ -1,4 +1,4 @@
-package model;
+package visualization.model;
 
 public class SelectedClassMeta {
 	private String name="";

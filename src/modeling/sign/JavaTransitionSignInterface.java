@@ -2,8 +2,8 @@ package modeling.sign;
 
 import java.util.ArrayList;
 
-import model.State;
-import model.Transition;
+import modeling.model.State;
+import modeling.model.Transition;
 
 public interface JavaTransitionSignInterface {
 //	public Iterator<State> stateExtract(String line);

@@ -1,4 +1,4 @@
-package model;
+package modeling.model;
 
 public class State {
 	boolean is_exception;
