@@ -1,7 +1,7 @@
 package visualization.views.delegation;
 
 import visualization.views.ModelDispView;
-import visualization.views.delegation.graphic.model.VisualizedStatechart;
+import visualization.views.graphic.model.VisualizedStatechart;
 
 public class ModelDispViewDelegation {
 	private ModelDispViewDelegation(){}

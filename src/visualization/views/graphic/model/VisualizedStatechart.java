@@ -1,4 +1,4 @@
-package visualization.views.delegation.graphic.model;
+package visualization.views.graphic.model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,6 +9,10 @@ import org.eclipse.swt.graphics.Point;
 
 import visualization.config.Config;
 import visualization.model.SelectedClass;
+import visualization.views.graphic.model.curve.Curve;
+import visualization.views.graphic.model.sameroute.TransitionStatePair;
+import visualization.views.graphic.model.sameroute.TransitionStatePairList;
+import visualization.views.graphic.model.statepos.StatePosition;
 import checking.factory.ServiceFactory;
 import checking.model.Defect;
 import checking.model.DefectType;
@@ -17,10 +21,8 @@ import modeling.model.Transition;
 
 public class VisualizedStatechart{
 	public VisualizedStatechart() {}
-	private HashMap<State, Point> state_position_map=new HashMap<State, Point>();
+	private StatePosition state_pos_def=new StatePosition();
 	private HashMap<Transition, Curve> transition_curve_map=new HashMap<Transition, Curve>();
-	private static Point center=new Point(Config.get_canvas_size().x/2, Config.get_canvas_size().y/2);
-	private static int radius=Config.get_canvas_size().y/2-30;//这里调整状态图相对边框的大小
 	private ArrayList<Transition> transitions=SelectedClass.getInstance().getStatechart().getTransitions();
 	private ArrayList<State> states=SelectedClass.getInstance().getStatechart().getStates();
 	private TransitionStatePairList transition_state_pair_list=new TransitionStatePairList();
@@ -32,18 +34,7 @@ public class VisualizedStatechart{
 		auto_def_transition_curves();
 	}
 	private void auto_def_state_positions(){
-		int nr=states.size();
-		for(int i=0;i<states.size();i++){
-			state_position_map.put(states.get(i), pos_on_circle(i,nr));
-		}
-	}
-	//nr>=1, i>=0, default initial position is at 3 o'clock 
-	//center of state rectangle
-	private Point pos_on_circle(int i,int nr){
-		double angle=2*Math.PI*i/nr;
-		int x=center.x+(int)(radius*Math.cos(angle));
-		int y=center.y+(int)(radius*Math.sin(angle));
-		return new Point(x, y);
+		state_pos_def.init_from(states);
 	}
 	
 	private void auto_def_transition_curves() {
@@ -55,7 +46,7 @@ public class VisualizedStatechart{
 		}
 	}
 	private void def_transition_curve(TransitionStatePair state_pair,Transition transition) {
-		transition_curve_map.put(transition, new Curve(state_pair,state_position_map,transition));
+		transition_curve_map.put(transition, new Curve(state_pair,state_pos_def.state_position_map,transition));
 	}
 	public void draw(GC gc){ 
 		gc.setBackground(new Color(null, 255, 255, 255));
@@ -74,7 +65,7 @@ public class VisualizedStatechart{
 	    gc.setLineWidth(3);
 	    for (int i = 0; i < states.size(); i++) {
 	    	State state=states.get(i);
-	    	Point state_pos=state_position_map.get(state);
+	    	Point state_pos=this.state_pos_def.state_position_map.get(state);
 	    	if(state_pos==null)return;
 	    	int width=Config.get_state_rectangle_size().x;
 	    	int height=Config.get_state_rectangle_size().y;

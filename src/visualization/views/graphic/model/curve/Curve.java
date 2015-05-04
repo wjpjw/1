@@ -1,4 +1,4 @@
-package visualization.views.delegation.graphic.model;
+package visualization.views.graphic.model.curve;
 
 import java.util.HashMap;
 
@@ -9,6 +9,7 @@ import org.eclipse.swt.graphics.Path;
 import org.eclipse.swt.graphics.Point;
 
 import visualization.config.Config;
+import visualization.views.graphic.model.sameroute.TransitionStatePair;
 
 public class Curve {
 	private Path path=new Path(null);

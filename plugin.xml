@@ -69,13 +69,6 @@
                enablesFor="1"
                id="com.test.popmenu.newTransitionAction">
          </action>
-          <action
-               label="Model Checking"
-               class="visualization.popup.actions.CheckAction"
-               menubarPath="visualization.popup.actions.PopupMenu1/group1"
-               enablesFor="1"
-               id="visualization.popup.actions.CheckingAction">
-         </action>
          <action
                label="Automatic Modeling"
                class="visualization.popup.actions.ModelingAction"

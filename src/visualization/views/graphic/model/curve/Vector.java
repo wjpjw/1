@@ -1,4 +1,4 @@
-package visualization.views.delegation.graphic.model;
+package visualization.views.graphic.model.curve;
 
 public class Vector {
 	public double x;

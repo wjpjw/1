@@ -1,4 +1,4 @@
-package visualization.views.delegation.graphic.model;
+package visualization.views.graphic.model.sameroute;
 
 import java.util.ArrayList;
 import java.util.HashMap;
