@@ -1,0 +1,28 @@
+package checking.strategy;
+
+import java.util.ArrayList;
+
+import modeling.model.State;
+import modeling.model.Statechart;
+import modeling.model.Transition;
+import checking.model.Defect;
+import checking.model.DefectType;
+
+public class InitExceptionStrategy {
+
+	public static ArrayList<State> returnExceptionStates(Statechart stateChart) {
+
+		ArrayList<State> initExceptionStatesList = new ArrayList<State>();
+
+		for (int i = 0; i < stateChart.getStates().size(); i++) {
+			if (stateChart.getStates().get(i).isIs_exception()
+					&& stateChart.getStates().get(i).isIs_init()) {
+				initExceptionStatesList.add(stateChart.getStates().get(i));
+			}
+		}
+
+		return initExceptionStatesList;
+
+	}
+
+}
