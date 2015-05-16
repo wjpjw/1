@@ -8,9 +8,19 @@ import modeling.model.Transition;
 import checking.model.Defect;
 import checking.model.DefectType;
 
-public class InitExceptionStrategy {
+public class InitExceptionStrategy implements Strategy {
 
-	public static ArrayList<State> returnExceptionStates(Statechart stateChart) {
+	private static InitExceptionStrategy strategy = new InitExceptionStrategy();
+
+	private InitExceptionStrategy() {
+
+	}
+
+	public static InitExceptionStrategy getInstance() {
+		return strategy;
+	}
+
+	public ArrayList<State> returnDefectedStates(Statechart stateChart) {
 
 		ArrayList<State> initExceptionStatesList = new ArrayList<State>();
 

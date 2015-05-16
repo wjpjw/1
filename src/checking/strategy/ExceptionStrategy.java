@@ -7,10 +7,21 @@ import modeling.model.Statechart;
 import modeling.model.Transition;
 import checking.model.Defect;
 import checking.model.DefectType;
+import checking.service.CheckingService;
 
-public class ExceptionStrategy {
+public class ExceptionStrategy implements Strategy{
 	
-	public static ArrayList<State> returnExceptionStates(Statechart stateChart){
+	private static ExceptionStrategy strategy = new ExceptionStrategy();
+	
+	private ExceptionStrategy(){
+		
+	}
+	
+	public static ExceptionStrategy getInstance(){
+		return strategy;
+	}
+	
+	public  ArrayList<State> returnDefectedStates(Statechart stateChart){
 		
 		ArrayList<Transition> tl = new ArrayList<Transition>(stateChart.getTransitions());
 		ArrayList<State> exceptionStatesList = new ArrayList<State>(stateChart.getStates());

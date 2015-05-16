@@ -1,15 +1,13 @@
 package checking.service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import modeling.model.State;
 import modeling.model.Statechart;
+import checking.factory.ServiceFactory;
+import checking.factory.StrategyFactory;
 import checking.model.Defect;
 import checking.model.DefectType;
-import checking.strategy.ExceptionStrategy;
-import checking.strategy.InitExceptionStrategy;
-import checking.strategy.UnreachableStrategy;
 
 public class CheckingService {
 
@@ -46,17 +44,17 @@ public class CheckingService {
 		defects.clear();
 		if (stateChart == null)
 			return null;
-
-		ArrayList<State> iel = InitExceptionStrategy
-				.returnExceptionStates(stateChart);
+		
+		ArrayList<State> iel = StrategyFactory.getInitExceptionStrategyInstance()
+				.returnDefectedStates(stateChart);
 		saveDefects("initException", iel);
 
-		ArrayList<State> ul = UnreachableStrategy
-				.returnUnreachableStates(stateChart);
+		ArrayList<State> ul = StrategyFactory.getUnreachableStrategyInstance()
+				.returnDefectedStates(stateChart);
 		saveDefects("unreachable", ul);
 
-		ArrayList<State> el = ExceptionStrategy
-				.returnExceptionStates(stateChart);
+		ArrayList<State> el = StrategyFactory.getExceptionStrategyInstance()
+				.returnDefectedStates(stateChart);
 		saveDefects("exception", el);
 
 		return defects;

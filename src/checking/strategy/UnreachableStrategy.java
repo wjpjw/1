@@ -8,13 +8,25 @@ import modeling.model.Transition;
 import checking.model.Defect;
 import checking.model.DefectType;
 
-public class UnreachableStrategy {
+public class UnreachableStrategy implements Strategy {
 
-	public static ArrayList<State> returnUnreachableStates(Statechart stateChart){
-		
-		ArrayList<Transition> tl = new ArrayList<Transition>(stateChart.getTransitions());
+	private static UnreachableStrategy strategy = new UnreachableStrategy();
+
+	private UnreachableStrategy() {
+
+	}
+
+	public static UnreachableStrategy getInstance() {
+		return strategy;
+	}
+
+	public ArrayList<State> returnDefectedStates(Statechart stateChart) {
+
+		ArrayList<Transition> tl = new ArrayList<Transition>(
+				stateChart.getTransitions());
 		ArrayList<State> reachableStatesList = new ArrayList<State>();
-		ArrayList<State> unreachableStatesList = new ArrayList<State>(stateChart.getStates());
+		ArrayList<State> unreachableStatesList = new ArrayList<State>(
+				stateChart.getStates());
 		for (int i = 0; i < tl.size(); i++) {
 			Transition transition = tl.get(i);
 			if (transition.getPreState() != null
@@ -37,7 +49,7 @@ public class UnreachableStrategy {
 				unreachableStatesList.remove(state);
 			}
 		}
-		
+
 		return unreachableStatesList;
 	}
 }
