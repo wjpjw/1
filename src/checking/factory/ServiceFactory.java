@@ -1,12 +1,12 @@
 package checking.factory;
 
-import checking.service.Service;
+import checking.service.CheckingService;
 
 public class ServiceFactory {
 
-	public static Service getServiceInstance()
+	public static CheckingService getServiceInstance()
 	{
-		return Service.getInstance();
+		return CheckingService.getInstance();
 	}
 	
 }
