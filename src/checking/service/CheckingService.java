@@ -45,15 +45,15 @@ public class CheckingService {
 		if (stateChart == null)
 			return null;
 		
-		ArrayList<State> iel = StrategyFactory.getInitExceptionStrategyInstance()
+		ArrayList<State> iel = StrategyFactory.getStrategyInstance("initException")
 				.returnDefectedStates(stateChart);
 		saveDefects("initException", iel);
 
-		ArrayList<State> ul = StrategyFactory.getUnreachableStrategyInstance()
+		ArrayList<State> ul = StrategyFactory.getStrategyInstance("unreachable")
 				.returnDefectedStates(stateChart);
 		saveDefects("unreachable", ul);
 
-		ArrayList<State> el = StrategyFactory.getExceptionStrategyInstance()
+		ArrayList<State> el = StrategyFactory.getStrategyInstance("exception")
 				.returnDefectedStates(stateChart);
 		saveDefects("exception", el);
 
