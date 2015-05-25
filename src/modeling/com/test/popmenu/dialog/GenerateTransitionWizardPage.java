@@ -20,6 +20,8 @@ import org.eclipse.swt.widgets.Text;
 public class GenerateTransitionWizardPage extends WizardPage {
 
 	private Combo preInitCombo;
+	private Combo preExceptionCombo;
+	private Combo postInitCombo;
 	private Combo postExceptionCombo;
 	private Text textPre;
 	private Text textPost;
@@ -82,13 +84,31 @@ public class GenerateTransitionWizardPage extends WizardPage {
 			preState.setIs_init(false);
 		}
 		//ռλ
-		label = new Label(composite, SWT.NONE);
+		preExceptionCombo = new Combo(composite, SWT.DROP_DOWN | SWT.READ_ONLY);		
+		preExceptionCombo.add(ComboKey.NOTEXCEPTIONSTATE);
+		preExceptionCombo.add(ComboKey.EXCEPTIONSTATE);
+		preExceptionCombo.select(0);
 		data = new GridData(SWT.BEGINNING, SWT.BEGINNING, false,
 				false, 1, 1);
 		data.widthHint = 100;
-		label.setLayoutData(data);
+		preExceptionCombo.setLayoutData(data);
+		preExceptionCombo.addSelectionListener(new SelectionAdapter() {
 
-		
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				if(preExceptionCombo.getText().equals(ComboKey.NOTEXCEPTIONSTATE)){
+					preState.setIs_exception(false);
+				}else{
+					preState.setIs_exception(true);;
+				}
+			}});
+		if(preExceptionCombo.getText().equals(ComboKey.NOTEXCEPTIONSTATE)){
+			preState.setIs_exception(false);
+		}else{
+			preState.setIs_exception(true);;
+		}
+	
+				
 		//transition MethodName
 		label = new Label(composite, SWT.NONE);
 		label.setText("MethodName: ");
@@ -121,11 +141,37 @@ public class GenerateTransitionWizardPage extends WizardPage {
 		data = new GridData(SWT.BEGINNING, SWT.BEGINNING, false, false, 1, 1);
 		data.widthHint = 200;
 		textPost.setLayoutData(data);
+		
+		
+		postInitCombo = new Combo(composite, SWT.DROP_DOWN | SWT.READ_ONLY);		
+		postInitCombo.add(ComboKey.NOTINITSTATE);
+		postInitCombo.add(ComboKey.ISINITSTATE);
+		postInitCombo.select(0);
+		data = new GridData(SWT.BEGINNING, SWT.BEGINNING, false,
+				false, 1, 1);
+		data.widthHint = 100;
+		postInitCombo.setLayoutData(data);
+		postInitCombo.addSelectionListener(new SelectionAdapter() {
 
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				if(postInitCombo.getText().equals(ComboKey.ISINITSTATE)){
+					postState.setIs_init(true);
+				}else{
+					postState.setIs_init(false);
+				}
+			}});
+		if(postInitCombo.getText().equals(ComboKey.ISINITSTATE)){
+			postState.setIs_init(true);
+		}else{
+			postState.setIs_init(false);
+		}
+		
 		postExceptionCombo = new Combo(composite, SWT.DROP_DOWN | SWT.READ_ONLY);		
 		postExceptionCombo.add(ComboKey.NOTEXCEPTIONSTATE);
 		postExceptionCombo.add(ComboKey.EXCEPTIONSTATE);
 		postExceptionCombo.select(0);
+		
 		data = new GridData(SWT.BEGINNING, SWT.BEGINNING, false,
 				false, 1, 1);
 		data.widthHint = 100;
@@ -146,16 +192,9 @@ public class GenerateTransitionWizardPage extends WizardPage {
 			postState.setIs_exception(false);
 		}
 		
-		label = new Label(composite, SWT.NONE);
-		data = new GridData(SWT.BEGINNING, SWT.BEGINNING, false,
-				false, 1, 1);
-		data.widthHint = 100;
-		label.setLayoutData(data);
 		
 		setPageComplete(false);
 		addActions();
-		
-		
 	}
 	
 	private void addActions() {
